@@ -1,4 +1,2 @@
 #!/usr/bin/python3
-for x in range(97, 123):
-    print(chr(x), end="")
-
+print(''.join(chr(x) for x in range(97, 123)), end="")
