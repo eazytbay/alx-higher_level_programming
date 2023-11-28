@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 def uppercase(s):
+    result = ""  # Initialize an empty string to store the result
     for char in s:
         if 97 <= ord(char) <= 122:
-            print("{}".format(chr(ord(char) - 32)), end="")
+            result += "{}".format(chr(ord(char) - 32))
         else:
-            print("{}".format(char), end="")
-    print()
+            result += "{}".format(char)
+    
+    print(result)
