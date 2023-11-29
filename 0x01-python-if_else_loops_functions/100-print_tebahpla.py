@@ -6,5 +6,5 @@ for x in range(ord('Z'), ord('A') - 1, -1):
     else:
         output += chr(x).upper()
 
-print(output, end='')
+print("{}".format(output), end='')
 
