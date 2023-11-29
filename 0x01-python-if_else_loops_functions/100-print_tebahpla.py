@@ -5,6 +5,4 @@ for x in range(ord('Z'), ord('A') - 1, -1):
         output += chr(x).lower()
     else:
         output += chr(x).upper()
-
 print("{}".format(output), end='')
-
