@@ -1,6 +1,10 @@
 #!/usr/bin/python3
-for x in range(ord('Z'), ord('A')-1, -1):
+output = ""
+for x in range(ord('Z'), ord('A') - 1, -1):
     if x % 2 == 0:
-        print(chr(x).lower(), end='')
+        output += chr(x).lower()
     else:
-        print(chr(x).upper(), end='')
+        output += chr(x).upper()
+
+print(output, end='')
+
