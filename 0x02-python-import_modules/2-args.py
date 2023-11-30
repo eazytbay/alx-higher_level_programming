@@ -1,6 +1,7 @@
 #!/usr/bin/python3
     
 if __name__ == "__main__":
+    """DIsplay the exact list and number of the arguments"""
     import sys
     n_arg = len(sys.argv) - 1
 
