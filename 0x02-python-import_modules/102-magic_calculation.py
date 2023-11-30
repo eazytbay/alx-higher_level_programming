@@ -1,7 +1,6 @@
 #!/usr/bin/python
 def magic_calculation(x, y):
-    add, sub = __import__('magic_calculation_102', globals(), locals(), ['add', 'sub']).add, __import__('magic_calculation_102', globals(), locals(), ['add', 'sub']).sub
-
+    from magic_calculation_102 import add, sub
     if x < y:
         result = add(x, y)
         for i in range(4, 6):
