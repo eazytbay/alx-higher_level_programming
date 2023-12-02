@@ -1,13 +1,9 @@
 def max_integer(my_list=[]):
-    max_value = None
-    void_list = False
-    if not my_list:
-        void_list = True
-    if not void_list:
-        for dig in my_list:
-            if max_value is None or dig > max_value:
-                max_value = dig
-        if void_list:
-            return None
-        else:
-            return max_value
+    if len(my_list) == 0:
+        return "None"
+    else:
+        max = my_list[0]
+        for x in range(len(my_list)):
+            if my_list[x] > max:
+                max = my_list[x]
+        return max
