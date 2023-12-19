@@ -53,4 +53,3 @@ class Square:
     def __ge__(self, other):
         """Check if the area of this square is greater than or equal to the area of another square."""
         return self.area() >= other.area()
-
