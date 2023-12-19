@@ -110,4 +110,4 @@ class SinglyLinkedList():
             linked_list.append(iterator.data)
             iterator = iterator.next_node
 
-        return '\n'.join(str(i) for i in linked_list)
+        return '\n'.join(str(x) for x in linked_list)
