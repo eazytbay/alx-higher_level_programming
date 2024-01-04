@@ -43,12 +43,12 @@ if __name__ == "__main__":
         return True
 
     def clear_a(o):
-        """removes the answers from the exact point of failure on"""
+        """removes the answers from the exact point of failure"""
         for s in range(o, t):
             c[s][1] = None
 
     def nqueens(o):
-        """recursively backtrack the function to find the solution"""
+        """recursively backtrack the function to locate the solution"""
         for p in range(t):
             clear_a(o)
             if reject(o, p):
