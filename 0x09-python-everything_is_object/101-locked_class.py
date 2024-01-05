@@ -3,13 +3,14 @@
 LockedClass
 """
 
-
 class LockedClass:
-    """ No class or object attributes, can't set
+    __slots__ = ("first_name",)
+     """ No class or object attributes, can't set
         Except for first_name
     """
-    def __setattr__(self, attribute, value):
-        if attribute == "first_name":
-            self.__dict__[attribute] = value
+    def __setattr__(self, name, value):
+        if name == "first_name":
+            super().__setattr__(name, value)
         else:
-            raise AttributeError("'LockedClass' object has no attribute '" + attribute + "'")
+            raise AttributeError(f"Cannot set attribute '{name}'")
+
