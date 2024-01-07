@@ -1,0 +1,129 @@
+The ``0-add_integer`` module
+
+====================================
+    Doctest for 0-add_integer.py
+====================================
+
+Importing the add_integer function from the module.
+
+::
+	>>> add_integer = __import__("0-add_integer").add_integer
+
+The Test cases used for the add integer function.
+
+
+	Testcase 1
+	==========
+Addition of the two positive integers.
+::
+	>>> add_integer(3, 5)
+	8
+
+
+	Testcase 2
+	==========
+Inclusion of a positive and negative integer.
+::
+	>>> add_integer(100, -5)
+	95
+	>>> add_integer(-20, 30)
+	10
+
+	Testcase 3
+	==========
+Checking the add function with one input.
+::
+	>>> add_integer(300)
+	398
+
+	Testcase 4
+	=========
+Inclusion of float numbers while expecting an integer output.
+::
+	>>> add_integer(200.4, 40)
+	240
+	>>> add_integer(20, 30.2)
+	50
+
+	Testcase 5
+	==========
+Using a non integer type.
+::
+	>>> add_integer(4, "School")
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+	
+	>>> add_integer("Bag", 49)
+	Traceback (most recent call last):
+        ...
+        TypeError: a must be an integer
+
+	>>> add_integer("School", "Bag")
+	Traceback (most recent call last):
+        ...
+        TypeError: a must be an integer
+
+
+	Testcase 6
+	==========
+Adding a none type 
+::
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	...
+    	TypeError: a must be an integer
+
+	>>> add_integer(56, None)
+        Traceback (most recent call last):
+        ...
+        TypeError: b must be an integer
+
+	
+	Testcase 7
+	==========
+Overflows in infinity types.
+::
+	>>> add_integer(float('inf'), 0)
+ 	Traceback (most recent call last):
+    	...
+    	OverflowError: cannot convert float infinity to integer
+
+	>>> add_integer(float('inf'), float('-inf'))
+    	Traceback (most recent call last):
+    	...
+    	OverflowError: cannot convert float infinity to integer
+
+	Testcase 8
+	==========
+Adding iterables.
+
+	Tuples
+
+    	>>> add_integer((1, 1))
+    	Traceback (most recent call last):
+        ...
+    	TypeError: a must be an integer
+	
+	List
+
+	>>> add_integer(123, [])
+    	Traceback (most recent call last):
+	...
+    	TypeError: b must be an integer
+
+	Sets
+
+	>>> add_integer({1, 1})
+        Traceback (most recent call last):
+        ...
+        TypeError: a must be an integer
+
+	Testcase 9
+	==========
+Adding nan type.
+	
+    	>>> add_integer(0, float('nan'))
+    	Traceback (most recent call last):
+    	...
+    	ValueError: cannot convert float NaN to integer
