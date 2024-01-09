@@ -1,34 +1,42 @@
 #!/usr/bin/python3
-"""
-The clasS "Student"
-"""
+"""A student class
+    """
 
 
 class Student:
-    """Definition of class student"""
+    """A class defining a student
+    """
+
     def __init__(self, first_name, last_name, age):
-        """Student Initialization"""
+        """Initialize the student instance
+        Args:
+            first_name (string): Student first name
+            last_name (string): Student last name
+            age (int): Student age
+        """
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
     def to_json(self, attrs=None):
-        """This returns a dictionary that represents a Student instance
-        with the specified attributes"""
-        if attrs is None:
-            return self.__dict__
-        custom_dict = {}
-        for x in attrs:
-            try:
-                custom_dict[x] = self.__dict__[x]
-            except:
-                pass
-        return custom_dict
+        """returns a dictionary format of the student instance
+        Args:
+            - attrs: list of attributes
+        """
+
+        custom_dict = dict()
+        if type(attrs) is list and all(type(item) is str for item in attrs):
+            for elem in attrs:
+                if elemm in self.__dict__:
+                    custom_dict.update({elem: self.__dict__[elem]})
+            return custom_dict
+        return self.__dict__.copy()
 
     def reload_from_json(self, json):
-        """replaces all attributes of the Student instance"""
-        for access in json:
-            try:
-                setattr(self, access, json[access])
-            except:
-                pass
+        """reload_from_json(json)
+        Args:
+            json: dictionnary of attributes
+        """
+
+        for elemm in json:
+            self.__dict__.update({elem: json[elem]})

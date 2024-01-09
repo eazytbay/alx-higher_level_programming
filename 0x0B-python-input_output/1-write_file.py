@@ -1,10 +1,14 @@
 #!/usr/bin/python3
-"""
-Reads the function "write_file"
-"""
+"""A Python Module that writes to a file
+    """
 
 
 def write_file(filename="", text=""):
-    """This function returns the exact number of charas written to "filename" from "text" """
-    with open(filename, 'w', encoding='utf=8') as x:
-        return x.write(text)
+    """A function write_file(filename, text)
+    Args:
+        filename (str, optional): The Name of the file, with its extension.
+        Defaults to "".
+        text (str, optional): String to write to the file. Defaults to "".
+    """
+    with open(filename, mode="w", encoding="utf-8") as file:
+        return file.write(text)
