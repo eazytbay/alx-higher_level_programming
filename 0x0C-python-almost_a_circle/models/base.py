@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-A module Defining the "Base" class
+This module Defines the "Base" class
 """
 
 import csv
