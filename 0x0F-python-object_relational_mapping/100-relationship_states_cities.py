@@ -10,18 +10,18 @@ from sqlalchemy.orm import sessionmaker
 
 
 if __name__ == '__main__':
-    datab_engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
                            format(sys.argv[1], sys.argv[2], sys.argv[3]),
                            pool_pre_ping=True)
-    Base.metadata.create_all(datab_engine)
+    Base.metadata.create_all(engine)
 
-    Session = sessionmaker(bind=datab_engine)
+    Session = sessionmaker(bind=engine)
     session = Session()
 
-    fr_State = State(name='California')
-    fr_City = City(name='San Francisco')
-    fr_State.cities.append(fr_City)
+    newState = State(name='California')
+    newCity = City(name='San Francisco')
+    newState.cities.append(newCity)
 
-    session.add(fr_State)
-    session.add(fr_City)
+    session.add(newState)
+    session.add(newCity)
     session.commit()

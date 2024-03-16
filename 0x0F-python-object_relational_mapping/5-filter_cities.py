@@ -5,29 +5,18 @@
 A script that takes in the name of a state as an argument and lists all cities of that state, using the database hbtn_0e_4_usa
 '''
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import MySQLdb
-    import sys
+    from sys import argv
+    db = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
+                         passwd=argv[2], db=argv[3])
+    cur = db.cursor()
+    cur.execute("""SELECT cities.name FROM cities
+                   JOIN states ON cities.state_id = states.id
+                   WHERE BINARY states.name=%s ORDER
+                   BY cities.id""", (argv[4],))
 
-    if len(sys.argv) >= 5:
-
-        datab = MySQLdb.connect(host='localhost',
-                                        port=3306,
-                                        user=sys.argv[1],
-                                        passwd=sys.argv[2],
-                                        db=sys.argv[3])
-
-        input_state = sys.argv[4]
-        cur = datab.cursor()
-
-        cur.execute('SELECT cities.name FROM cities' +
-                    ' INNER JOIN states ON cities.state_id = states.id' +
-                    ' WHERE BINARY states.name = %s' +
-                    ' ORDER BY cities.id ASC;',
-                    [input_state]
-                    )
-
-        disp_result = cur.fetchall()
-        print(", ".join([row[0] for row in disp_result]))
-
-        db_connection.close()
+    rows = cur.fetchall()
+    ephem = tuple(row[0] for row in rows)
+    print(*ephem, sep=", ")
+    db.close()
