@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-"""This is a python file that contains the definition of the class
-of a City and an instance Base = declarative_base()"""
-
-from relationship_state import Base
+"""
+Here's the class definition of a City
+"""
+from model_state import Base
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 
 
 class City(Base):
     """
-    Class that defines each city
+    This Class efines each city
     """
     __tablename__ = 'cities'
     id = Column(Integer, unique=True, nullable=False, primary_key=True)

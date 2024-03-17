@@ -4,24 +4,18 @@ This script changes the name of a State object
 from the database hbtn_0e_6_usa at id == 2
 '''
 
-from model_state import State, Base
-from sys import argv
-from sqlalchemy import create_engine, insert
-from sqlalchemy.engine.url import URL
+import sys
+from model_state import Base, State
+from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 
 
 if __name__ == "__main__":
-    url_parameters = {'drivername': 'mysql+mysqldb',
-                  'username': argv[1],
-                  'password': argv[2],
-                  'host': 'localhost',
-                  'port': 3306,
-                  'database': argv[3]}
-    datab_engine = create_engine(URL.create(**url_parameters), echo=True)
-    Base.metadata.create_all(datab_engine)
-    Session = sessionmaker(bind=datab_engine)
-    obj_sess = Session()
-    x = obj_sess.query(State).filter(State.id == 2)\
-                .update({'name': "New Mexico"})
-    obj_sess.commit()
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
+                           .format(sys.argv[1], sys.argv[2], sys.argv[3]))
+    Base.metadata.create_all(engine)
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    new_instance = session.query(State).filter_by(id=2).first()
+    new_instance.name = 'New Mexico'
+    session.commit()
